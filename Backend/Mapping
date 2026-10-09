@@ -1,0 +1,25 @@
+
+User            -------> id, username, email, password, role_id(FK)
+Role            -------> id, name, description
+Branch          -------> id, name, location
+Sport           -------> id, name
+Coach           -------> id, name,experience, user_id(FK), branch_id(FK)
+Player          -------> id, dob, gender, user_id(FK), branch_id(FK)
+TrainingProgram -------> id, name, duration ,fees , sport_id(FK)
+Batch           -------> id, name, program_id(FK), coach_id(FK)
+Membership      -------> id, player_id(FK), batch_id(FK), start_date, end_date, status
+Payment         -------> id, transactionId, amount, status, membership_id(FK)
+
+Relations
+
+User            1<---->1 Coach
+User            1<---->1 Player
+Branch          1<---->N Coach
+Branch          1<---->N Player
+Sport           1<---->N TrainingProgram
+TrainingProgram 1<---->N Batch
+Coach           1<---->N Batch
+Player          1<---->N Membership
+Batch           1<---->N Membership
+Membership      1<---->N Payment
+Player          1<---->N Payment
